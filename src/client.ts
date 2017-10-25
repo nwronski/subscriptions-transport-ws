@@ -581,6 +581,7 @@ export class SubscriptionClient {
     // Max timeout trying to connect
     this.maxConnectTimeoutId = setTimeout(() => {
       if (this.status !== this.wsImpl.OPEN) {
+        this.reconnecting = true;
         this.close(false, true);
       }
     }, this.maxConnectTimeGenerator.duration());
